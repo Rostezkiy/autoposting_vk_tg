@@ -1,0 +1,3 @@
+2023-07-02 13:55:58 - INFO - Starting application
+2023-07-02 13:55:58 - DEBUG - Successfully got long poll server data
+2023-07-02 13:55:58 - DEBUG - Data: server=https://lp.vk.com/xxxx, key=xxxx, ts=xxx
