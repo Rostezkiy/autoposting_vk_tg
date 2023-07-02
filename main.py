@@ -100,14 +100,14 @@ def listen_long_poll_server(server, key, ts):
                     # short caption with link "Читать полностью"
                     message = f"{first_sentence}...\n\n—\n<a href='{post_url}'>Читать полностью</a>"
                     if attachments:
-                        caption = f"{first_sentence}...\n\n—\nЧитать полностью > '{post_url}'"
+                        caption = f"{first_sentence}...\n\n—\nЧитать полностью > {post_url}"
                         send_photos_to_telegram(attachments, caption)
                     else:
                         send_message_to_telegram(message)
                 else:
                     message = f"{text} \n\n—\n<a href='{post_url}'>Открыть запись</a>"
                     if attachments:
-                        caption = f"{text} \n\n—\n'Открыть запись > {post_url}'"
+                        caption = f"{text} \n\n—\nОткрыть запись > {post_url}"
                         send_photos_to_telegram(attachments, caption)
                     else:
                         send_message_to_telegram(message)
