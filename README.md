@@ -14,6 +14,8 @@ _Preparation:_
 - Fill in **config.ini** correctly. 
   
 _Start:_ 
+
+- pip install -r requirements.txt
 - python main.py
 - enjoy
 
