@@ -6,7 +6,7 @@ Configuration files for all needed tokens, variables, logging.
 Logging into file and log rotation. (log example added)
 
 
-_Preparation: _
+_Preparation:_
 
 - Open config.ini and check what information you need to get.
 - Create telegram bot and add it at your channel with admin rights.
