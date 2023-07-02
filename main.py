@@ -67,7 +67,6 @@ def get_long_poll_server():
         logger.debug('Successfully got long poll server data')
     else:
         logger.error('Failed to get long poll server data: %s', response.text)
-
     return data['response']
 
 
@@ -81,8 +80,8 @@ def listen_long_poll_server(server, key, ts):
             ts = data['ts']
         except KeyError:
             logger.error('Failed to get "ts" key from data: %s', data)
-            return listen_long_poll_server(server, key, ts)
-
+            logger.warning('Restarting long polling')
+            return start_long_polling()
         for update in data['updates']:
             if update['type'] == 'wall_post_new':
                 post_id = update['object']['id']
@@ -100,14 +99,14 @@ def listen_long_poll_server(server, key, ts):
                     # short caption with link "Читать полностью"
                     message = f"{first_sentence}...\n\n—\n<a href='{post_url}'>Читать полностью</a>"
                     if attachments:
-                        caption = f"{first_sentence}...\n\n—\nЧитать полностью > {post_url}"
+                        caption = f"{first_sentence}...\n\n—\nЧитать полностью > \n{post_url}"
                         send_photos_to_telegram(attachments, caption)
                     else:
                         send_message_to_telegram(message)
                 else:
                     message = f"{text} \n\n—\n<a href='{post_url}'>Открыть запись</a>"
                     if attachments:
-                        caption = f"{text} \n\n—\nОткрыть запись > {post_url}"
+                        caption = f"{text} \n\n—\nОткрыть запись > \n{post_url}"
                         send_photos_to_telegram(attachments, caption)
                     else:
                         send_message_to_telegram(message)
